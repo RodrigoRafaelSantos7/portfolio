@@ -3,6 +3,9 @@ import Tempus from '@darkroom.engineering/tempus'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import dynamic from 'next/dynamic'
+import { useEffect } from 'react'
+import { useStore } from '@/lib/store'
+import { useLenis } from '@studio-freight/react-lenis'
 
 const Noise = dynamic(
   () => import('@/components/noise').then(({ Noise }) => {
@@ -54,6 +57,22 @@ if (typeof window !== 'undefined') {
 }
 
 export default function Home() {
+  const overflow = useStore(({ overflow }) => overflow)
+  const lenis = useLenis(ScrollTrigger.update)
+  useEffect(() => {
+    ScrollTrigger.refresh()
+  }, [lenis])
+
+  useEffect(() => {
+    if (overflow) {
+      lenis?.start()
+      document.documentElement.style.removeProperty('overflow')
+    } else {
+      lenis?.stop()
+      document.documentElement.style.setProperty('overflow', 'hidden')
+    }
+  }, [lenis, overflow])
+
   return (
     <>
       <Noise />
