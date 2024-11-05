@@ -3,7 +3,7 @@ import { useFrame } from '@/hooks/use-frame'
 import { useEffect, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 
-export default function Noise() {
+export function Noise() {
   const el = useRef<HTMLDivElement>(null)
   const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null)
   const [buffer, setBuffer] = useState<HTMLCanvasElement | null>(null)
