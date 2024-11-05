@@ -1,35 +1,47 @@
 'use client'
 import { useFrame } from '@/hooks/use-frame'
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 
 export default function Noise() {
   const el = useRef<HTMLDivElement>(null)
+  const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null)
+  const [buffer, setBuffer] = useState<HTMLCanvasElement | null>(null)
+  const [context, setContext] = useState<CanvasRenderingContext2D | null>(null)
 
   const { width: windowWidth, height: windowHeight } = useWindowSize()
-  const canvas = useMemo(() => document.createElement('canvas'), [])
-  const buffer = useMemo(() => document.createElement('canvas'), [])
-  const context = useMemo(() => canvas.getContext('2d'), [canvas])
 
   useEffect(() => {
-    if (el.current) {
+    const newCanvas = document.createElement('canvas')
+    const newBuffer = document.createElement('canvas')
+    const newContext = newCanvas.getContext('2d')
+
+    setCanvas(newCanvas)
+    setBuffer(newBuffer)
+    setContext(newContext)
+  }, [])
+
+  useEffect(() => {
+    if (el.current && canvas) {
       el.current.appendChild(canvas)
     }
 
     return () => {
-      canvas.remove()
+      if (canvas) {
+        canvas.remove()
+      }
     }
   }, [canvas])
 
   useEffect(() => {
-    const dpr = Math.min(window.devicePixelRatio, 2)
-    const width = windowWidth
-    const height = windowHeight
+    if (canvas && context) {
+      const dpr = Math.min(window.devicePixelRatio, 2)
+      const width = windowWidth
+      const height = windowHeight
 
-    canvas.width = width
-    canvas.height = height
+      canvas.width = width
+      canvas.height = height
 
-    if (context) {
       const image = context.createImageData(width * dpr, height * dpr)
       const buffer32 = new Uint32Array(image.data.buffer)
 
@@ -37,17 +49,19 @@ export default function Noise() {
         if (Math.random() < 0.5) buffer32[i] = 0xffffffff
       }
 
-      buffer.width = width
-      buffer.height = height
-      const bufferContext = buffer.getContext('2d')
-      if (bufferContext) {
-        bufferContext.putImageData(image, 0, 0)
+      if (buffer) {
+        buffer.width = width
+        buffer.height = height
+        const bufferContext = buffer.getContext('2d')
+        if (bufferContext) {
+          bufferContext.putImageData(image, 0, 0)
+        }
       }
     }
   }, [buffer, windowWidth, windowHeight, context, canvas])
 
   useFrame(() => {
-    if (context) {
+    if (context && canvas && buffer) {
       context.clearRect(0, 0, canvas.width, canvas.height)
       context.drawImage(
         buffer,
