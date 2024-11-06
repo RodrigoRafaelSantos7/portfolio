@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
 import { useStore } from '@/lib/store'
 import { useLenis } from '@studio-freight/react-lenis'
+import RealViewport from '@/components/real-viewport'
 
 const Noise = dynamic(
   () => import('@/components/noise').then(({ Noise }) => {
@@ -75,6 +76,7 @@ export default function Home() {
 
   return (
     <>
+      <RealViewport />
       <Noise />
     </>
   )

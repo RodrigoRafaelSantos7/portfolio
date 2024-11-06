@@ -19,3 +19,25 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer components {
+  .cursor-container {
+    @apply fixed top-0 left-0 h-screen w-full z-[5] pointer-events-none overflow-hidden;
+  }
+
+  .cursor {
+    @apply absolute rounded-full w-10 h-10 bg-black opacity-40;
+    transform: translate(-50%, -50%);
+    transition: transform 600ms var(--ease-out-expo);
+  }
+
+  .cursor-pointer {
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  @media (hover: none) {
+    .cursor-container {
+      display: none;
+    }
+  }
+}
