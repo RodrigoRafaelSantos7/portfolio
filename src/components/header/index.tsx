@@ -1,62 +1,43 @@
-import { Link, Marquee } from '@studio-freight/compono'
-import { useMediaQuery } from '@studio-freight/hamo'
-import va from '@vercel/analytics'
+'use client'
+
+import { Marquee } from '@/components/marquee-scroll'
+import { Separator } from '@/components/separator'
+import { useMediaQuery } from '@/hooks/use-media-query'
+import { pad } from '@/lib/maths'
 import cn from 'clsx'
-import { ContactForm } from 'components/header/contact-form'
-import { Separator } from 'components/separator'
-import { pad } from 'lib/maths'
-import { useStore } from 'lib/store'
-import dynamic from 'next/dynamic'
+import Link from 'next/link'
+import { useMemo } from 'react'
 import s from './header.module.scss'
 
-const SFLogo = dynamic(() => import('icons/sf-logo.svg'), { ssr: false })
-const SFLogoMobile = dynamic(() => import('icons/sf-logo-mobile.svg'), {
-  ssr: false,
-})
-const Stard = dynamic(() => import('icons/stard.svg'), { ssr: false })
-const Monogram = dynamic(() => import('icons/sf-monogram.svg'), { ssr: false })
-const StarDuotone = dynamic(() => import('icons/star-duotone.svg'), {
-  ssr: false,
-})
-
-export const Header = ({ principles = [], contact }) => {
+export const Header = ({
+  principles = [],
+  contact,
+}: {
+  principles: string[]
+  contact: unknown
+}) => {
   const isMobile = useMediaQuery('(max-width: 800px)')
 
-  // const visible = usePageAppear()
-  const [contactIsOpen, setContactIsOpen] = useStore((state) => [
-    state.contactIsOpen,
-    state.setContactIsOpen,
-  ])
+  const memoizedPrinciples = useMemo(() => principles, [principles])
 
   return (
     <header className={cn(s.container, 'layout-block')}>
       <div className={cn(s.top, 'layout-grid')}>
         <div className={s.eggs}>
           <Link
-            name="easter egg"
             className={s.egg}
-            href="https://github.com/studio-freight/sf-website"
-          >
-            <Stard />
+            href="https://github.com/rodrigosantos7"
+          ></Link>
+          <Link className={s.egg} href="https://soundboard.studiofreight.com">
+            {/* Placeholder for removed SVG */}
           </Link>
-          <Link
-            name="easter egg - soundboard"
-            className={s.egg}
-            href="https://soundboard.studiofreight.com"
-          >
-            <Monogram />
-          </Link>
-          <Link
-            name="easter egg - pale blue dot"
-            className={s.egg}
-            href="https://youtu.be/GO5FwsblpT8"
-          >
-            <StarDuotone />
+          <Link className={s.egg} href="https://youtu.be/GO5FwsblpT8">
+            {/* Placeholder for removed SVG */}
           </Link>
         </div>
-        {isMobile === false && (
-          <Marquee className={s.marquee} duration={20}>
-            {principles.map((principle, i) => (
+        {!isMobile && (
+          <Marquee className={s.marquee}>
+            {memoizedPrinciples.map((principle, i) => (
               <p key={i} className={cn('p', s.principle)}>
                 <span>{pad(i + 1)}</span>
                 &nbsp;{principle}
@@ -65,29 +46,16 @@ export const Header = ({ principles = [], contact }) => {
             ))}
           </Marquee>
         )}
-        <button
-          className={cn('button', s.cta)}
-          onClick={() => {
-            va.track('Opened Contact Form')
-            setContactIsOpen(!contactIsOpen)
-          }}
-        >
-          Contact
-        </button>
       </div>
       <Separator />
       <div className={cn(s.header, 'layout-grid')}>
-        {isMobile === true ? (
-          <SFLogoMobile className={s.title} />
-        ) : (
-          <SFLogo className={s.title} />
-        )}
+        {/* Placeholder for removed logo */}
       </div>
       <Separator />
 
-      {isMobile === true && (
-        <Marquee className={s.marquee} duration={20}>
-          {principles.map((principle, i) => (
+      {isMobile && (
+        <Marquee className={s.marquee}>
+          {memoizedPrinciples.map((principle, i) => (
             <p key={i} className={cn('p', s.principle)}>
               <span>{pad(i + 1)}</span>
               &nbsp;{principle}
@@ -96,7 +64,6 @@ export const Header = ({ principles = [], contact }) => {
           ))}
         </Marquee>
       )}
-      <ContactForm data={contact} />
     </header>
   )
 }

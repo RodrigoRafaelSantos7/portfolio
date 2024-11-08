@@ -1,4 +1,5 @@
 import { Cursor } from '@/components/cursor'
+import { Header } from '@/components/header'
 import { Noise } from '@/components/noise'
 import RealViewport from '@/components/real-viewport'
 import { Scrollbar } from '@/components/scrollbar'
@@ -49,6 +50,7 @@ export default function RootLayout({
         <Noise />
         <Cursor />
         <Scrollbar />
+        <Header principles={['Drugs', 'extasy']} contact={null} />
         <main className={s.main}>{children}</main>
       </body>
     </html>
