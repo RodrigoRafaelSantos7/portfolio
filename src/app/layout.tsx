@@ -1,3 +1,7 @@
+import { Cursor } from '@/components/cursor'
+import { Noise } from '@/components/noise'
+import RealViewport from '@/components/real-viewport'
+import { Scrollbar } from '@/components/scrollbar'
 import '@/styles/global.scss'
 import cn from 'clsx'
 import type { Metadata } from 'next'
@@ -41,6 +45,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(`theme-dark`, s.layout)} suppressHydrationWarning>
+        <RealViewport />
+        <Noise />
+        <Cursor />
+        <Scrollbar />
         <main className={s.main}>{children}</main>
       </body>
     </html>
