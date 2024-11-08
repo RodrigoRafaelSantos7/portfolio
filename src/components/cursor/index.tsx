@@ -1,13 +1,13 @@
-'use client'
 import cn from 'clsx'
 import gsap from 'gsap'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import s from './cursor.module.scss'
 
 function Cursor() {
   const cursor = useRef<HTMLDivElement | null>(null)
-  const [isGrab, setIsGrab] = useState(false)
-  const [isPointer, setIsPointer] = useState(false)
-  const [hasMoved, setHasMoved] = useState(false)
+  const [isGrab, setIsGrab] = useState<boolean>(false)
+  const [isPointer, setIsPointer] = useState<boolean>(false)
+  const [hasMoved, setHasMoved] = useState<boolean>(false)
 
   const onMouseMove = useCallback(
     ({ clientX, clientY }: MouseEvent) => {
@@ -50,9 +50,11 @@ function Cursor() {
       setIsPointer(false)
     }
 
-    elements = Array.from(
-      document.querySelectorAll("button,a,input,label,[data-cursor='pointer']")
-    ) as HTMLElement[]
+    elements = [
+      ...document.querySelectorAll(
+        "button,a,input,label,[data-cursor='pointer']"
+      ),
+    ] as HTMLElement[]
 
     elements.forEach((element) => {
       element.addEventListener('mouseenter', onMouseEnter, false)
@@ -77,9 +79,11 @@ function Cursor() {
       setIsGrab(false)
     }
 
-    elements = Array.from(
-      document.querySelectorAll("button,a,input,label,[data-cursor='pointer']")
-    ) as HTMLElement[]
+    elements = [
+      ...document.querySelectorAll(
+        "button,a,input,label,[data-cursor='pointer']"
+      ),
+    ] as HTMLElement[]
 
     elements.forEach((element) => {
       element.addEventListener('mouseenter', onMouseEnter, false)
@@ -95,14 +99,10 @@ function Cursor() {
   }, [])
 
   return (
-    <div style={{ opacity: hasMoved ? 1 : 0 }} className="cursor-container">
+    <div style={{ opacity: hasMoved ? 1 : 0 }} className={s.container}>
       <div ref={cursor}>
         <div
-          className={cn(
-            'cursor',
-            isGrab && 'cursor-grab',
-            isPointer && 'cursor-pointer'
-          )}
+          className={cn(s.cursor, isGrab && s.grab, isPointer && s.pointer)}
         />
       </div>
     </div>
