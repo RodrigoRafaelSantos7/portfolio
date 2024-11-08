@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import cn from 'clsx'
 import gsap from 'gsap'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -16,7 +16,7 @@ function Cursor() {
           x: clientX,
           y: clientY,
           duration: hasMoved ? 0.6 : 0,
-          ease: 'expo.out'
+          ease: 'expo.out',
         })
       }
       setHasMoved(true)
@@ -50,7 +50,9 @@ function Cursor() {
       setIsPointer(false)
     }
 
-    elements = Array.from(document.querySelectorAll('button,a,input,label,[data-cursor=\'pointer\']')) as HTMLElement[]
+    elements = Array.from(
+      document.querySelectorAll("button,a,input,label,[data-cursor='pointer']")
+    ) as HTMLElement[]
 
     elements.forEach((element) => {
       element.addEventListener('mouseenter', onMouseEnter, false)
@@ -75,7 +77,9 @@ function Cursor() {
       setIsGrab(false)
     }
 
-    elements = Array.from(document.querySelectorAll('button,a,input,label,[data-cursor=\'pointer\']')) as HTMLElement[]
+    elements = Array.from(
+      document.querySelectorAll("button,a,input,label,[data-cursor='pointer']")
+    ) as HTMLElement[]
 
     elements.forEach((element) => {
       element.addEventListener('mouseenter', onMouseEnter, false)
@@ -93,7 +97,13 @@ function Cursor() {
   return (
     <div style={{ opacity: hasMoved ? 1 : 0 }} className="cursor-container">
       <div ref={cursor}>
-        <div className={cn('cursor', isGrab && 'cursor-grab', isPointer && 'cursor-pointer')} />
+        <div
+          className={cn(
+            'cursor',
+            isGrab && 'cursor-grab',
+            isPointer && 'cursor-pointer'
+          )}
+        />
       </div>
     </div>
   )
