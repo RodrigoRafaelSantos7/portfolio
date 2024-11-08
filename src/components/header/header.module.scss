@@ -96,6 +96,7 @@
       grid-column: 1/-1;
       text-shadow: 0 0 10px;
       margin: desktop-vw(14px) 0;
+      text-align: center;
 
       @include mobile {
         margin: mobile-vw(10px) 0;

@@ -50,7 +50,10 @@ export default function RootLayout({
         <Noise />
         <Cursor />
         <Scrollbar />
-        <Header principles={['Drugs', 'extasy']} contact={null} />
+        <Header
+          principles={['Drugs', 'extasy', '443', "extasy'", 'Why not']}
+          contact={null}
+        />
         <main className={s.main}>{children}</main>
       </body>
     </html>
