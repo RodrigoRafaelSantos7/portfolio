@@ -3,129 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --header-height: 58px;
-
-  @media (min-width: 1024px) {
-    --header-height: 98px;
-  }
+  --background: #ffffff;
+  --foreground: #171717;
 }
 
-html {
-  @apply font-bold font-sans bg-theme-primary text-theme-secondary;
-  scrollbar-width: thin;
-
-  &.nav {
-    @apply overflow-hidden;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
   }
-}
-
-html,
-body {
-  @apply overscroll-none;
 }
 
 body {
-  @apply min-h-screen;
-}
-
-a,
-button,
-input,
-label,
-textarea,
-select {
-  @apply cursor-pointer;
-}
-
-*::selection {
-  @apply bg-theme-secondary text-theme-primary;
-}
-
-svg.icon path[fill],
-svg.icon rect[fill],
-svg.icon circle[fill] {
-  fill: currentColor;
-}
-
-svg.icon path[stroke],
-svg.icon rect[stroke],
-svg.icon circle[stroke] {
-  stroke: currentColor;
-}
-
-.decorate {
-  @apply relative text-green transition-colors duration-950 ease-out-expo;
-
-  &:before {
-    @apply absolute bottom-0 left-0 right-0 h-[0.075em] min-h-[1px] bg-current transition-transform duration-950 ease-out-expo;
-    content: '';
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-
-  @media (min-width: 1024px) {
-    &:not(:hover) {
-      color: currentColor;
-
-      &:before {
-        transform-origin: right;
-        transform: scaleX(0);
-      }
-    }
-  }
-}
-
-.aspect-ratio {
-  @apply relative w-full h-0;
-  padding-bottom: calc(100% / var(--aspect-ratio));
-
-  > :first-child {
-    @apply absolute top-0 left-0 w-full h-full;
-  }
-}
-
-.full-width {
-  @apply w-screen relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw];
-}
-
-.hidden-overflow {
-  @apply overflow-hidden;
-}
-
-.relative {
-  @apply relative;
-}
-
-.hide-on-desktop {
-  @media (min-width: 1024px) {
-    @apply hidden;
-  }
-}
-
-.hide-on-mobile {
-  @media (max-width: 1024px) {
-    @apply hidden;
-  }
-}
-
-html:not(.has-scroll-smooth) .hide-on-native-scroll {
-  @apply hidden;
-}
-
-html.has-scroll-smooth .hide-on-smooth-scroll {
-  @apply hidden;
-}
-
-.button {
-  @apply text-green text-xs py-1 px-2 rounded border border-current uppercase transition-colors duration-300 ease-out-expo select-none;
-
-  @media (min-width: 1024px) {
-    @apply text-sm py-1 px-2 rounded;
-  }
-
-  &:hover {
-    @apply text-black bg-green;
-  }
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer components {
@@ -145,150 +37,7 @@ html.has-scroll-smooth .hide-on-smooth-scroll {
 
   @media (hover: none) {
     .cursor-container {
-      @apply hidden;
+      display: none;
     }
-  }
-}
-
-:root {
-  --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
-  --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  --ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-  --ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-  --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
-  --ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
-  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
-  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
-  --ease-out-circ: cubic-bezier(0.075, 0.82, 0.165, 1);
-  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
-  --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
-  --ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
-  --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
-  --ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
-}
-
-:root {
-  --font: 'Neue Montreal';
-  --font-secondary: 'Messina Sans Mono';
-  --font-tertiary: 'GT Alpina';
-}
-
-.h1 {
-  @apply text-center text-[43px] font-bold leading-[92%] tracking-[-0.02em] uppercase;
-
-  @media (min-width: 1024px) {
-    @apply text-[178px];
-  }
-}
-
-.p {
-  @apply text-[16px] font-normal leading-[125%] tracking-[0.01em];
-
-  @media (min-width: 1024px) {
-    @apply leading-[140%] text-[16px];
-  }
-}
-
-.p-s {
-  @apply text-[12px] font-normal leading-[125%] tracking-[-0.02em] uppercase;
-
-  @media (min-width: 1024px) {
-    @apply text-[12px];
-  }
-}
-
-.p-xs {
-  @apply text-[8px] font-normal leading-[125%];
-
-  @media (min-width: 1024px) {
-    @apply text-[12px];
-  }
-}
-
-.text-uppercase {
-  @apply uppercase;
-}
-
-.text-start {
-  @apply text-left;
-}
-
-.text-end {
-  @apply text-right;
-}
-
-.text-muted {
-  @apply text-grey;
-}
-
-.text-bold {
-  @apply font-bold;
-}
-
-:root {
-  --white: rgb(255, 254, 244);
-  --grey: rgb(144, 144, 144);
-  --black: rgb(0, 0, 0);
-  --red: rgb(255, 0, 0);
-  --blue: rgb(65, 96, 255);
-  --green: rgb(0, 255, 106);
-  --white-transparent: rgba(255, 254, 244, 0);
-  --grey-transparent: rgba(144, 144, 144, 0);
-  --black-transparent: rgba(0, 0, 0, 0);
-  --red-transparent: rgba(255, 0, 0, 0);
-  --blue-transparent: rgba(65, 96, 255, 0);
-  --green-transparent: rgba(0, 255, 106, 0);
-}
-
-:root {
-  --layout-columns-count: 4;
-  --layout-columns-gap: 16px;
-  --layout-margin: 16px;
-
-  @media (min-width: 1024px) {
-    --layout-columns-count: 8;
-    --layout-columns-gap: 24px;
-    --layout-margin: 24px;
-  }
-
-  --layout-width: calc(100vw - (2 * var(--layout-margin)));
-  --layout-column-width: calc(
-    (
-        var(--layout-width) -
-          ((var(--layout-columns-count) - 1) * var(--layout-columns-gap))
-      ) / var(--layout-columns-count)
-  );
-}
-
-.layout-block {
-  @apply max-w-full mx-auto;
-}
-
-.layout-block-inner {
-  @apply px-[var(--layout-margin)];
-}
-
-.layout-grid {
-  @apply grid grid-cols-[repeat(var(--layout-columns-count),minmax(0,1fr))] gap-[var(--layout-columns-gap)];
-}
-
-.layout-grid-inner {
-  @apply grid grid-cols-[repeat(var(--layout-columns-count),minmax(0,1fr))] gap-[var(--layout-columns-gap)] px-[var(--layout-margin)];
-}
-
-html:not(.dev) {
-  scrollbar-width: none !important;
-
-  body {
-    -ms-overflow-style: none;
-  }
-
-  body::-webkit-scrollbar {
-    width: 0 !important;
-    height: 0 !important;
   }
 }
