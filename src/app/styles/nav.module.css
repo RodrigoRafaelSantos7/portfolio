@@ -1,0 +1,122 @@
+.header {
+  display: flex;
+  position: fixed;
+  font-size: 11px;
+  align-items: flex-end;
+  width: 100%;
+  justify-content: space-between;
+  padding: 20px;
+  text-transform: uppercase;
+  background-color: #121212;
+  z-index: 9999;
+  top: 0;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav a {
+  cursor: pointer;
+  position: relative;
+}
+
+.nav a:before {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 0;
+  background-color: #fff;
+  position: absolute;
+  top: 120%;
+  transition: width 0.5s ease-out;
+}
+
+.nav a:hover:before {
+  width: 100%;
+}
+
+.wavyPhraseContainer {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  height: 15px;
+}
+
+.wavyPhrase {
+  display: flex;
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 15px;
+}
+
+.wavyPhrase:nth-of-type(2) {
+  position: absolute;
+  top: 15px;
+}
+
+.wavyPhrase p {
+  margin: 0;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother timing function and longer duration */
+}
+
+/* First phrase animation */
+.nav a:hover .wavyPhrase:first-child p {
+  transform: translateY(-18px); /* Slightly larger movement */
+}
+
+/* Second phrase animation */
+.nav a:hover .wavyPhrase:nth-child(2) p {
+  transform: translateY(-18px);
+}
+
+/* Refined delays for smoother wave effect */
+.wavyPhrase p:nth-child(1) {
+  transition-delay: 0s;
+}
+.wavyPhrase p:nth-child(2) {
+  transition-delay: 0.02s;
+}
+.wavyPhrase p:nth-child(3) {
+  transition-delay: 0.04s;
+}
+.wavyPhrase p:nth-child(4) {
+  transition-delay: 0.06s;
+}
+.wavyPhrase p:nth-child(5) {
+  transition-delay: 0.08s;
+}
+.wavyPhrase p:nth-child(6) {
+  transition-delay: 0.1s;
+}
+.wavyPhrase p:nth-child(7) {
+  transition-delay: 0.12s;
+}
+.wavyPhrase p:nth-child(8) {
+  transition-delay: 0.14s;
+}
+
+/* Position the second phrase */
+.wavyPhrase:nth-of-type(2) {
+  position: absolute;
+  top: 18px; /* Match the transform distance */
+}
+
+@media (min-width: 800px) {
+  .header h1 {
+    font-size: 13px;
+  }
+
+  .wavyPhrase {
+    font-size: 13px;
+  }
+}
