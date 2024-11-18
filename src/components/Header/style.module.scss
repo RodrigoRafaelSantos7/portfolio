@@ -10,6 +10,7 @@
   font-weight: 300;
   box-sizing: border-box;
   align-items: center;
+  font-size: 13px;
 
   .logo {
     display: flex;
@@ -29,12 +30,12 @@
         position: relative;
         transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
         &:nth-of-type(2) {
-          padding-left: 0.3em;
+          padding-left: 0.5em;
         }
         &:nth-of-type(3) {
           position: absolute;
-          left: 120px;
-          padding-left: 0.3em;
+          left: 110px;
+          padding-left: 0.5em;
         }
       }
     }
@@ -48,10 +49,10 @@
           transform: translateX(-100%);
         }
         .rodrigo {
-          transform: translateX(-65px);
+          transform: translateX(-55px);
         }
         .santos {
-          transform: translateX(-60px);
+          transform: translateX(-50px);
         }
       }
     }
