@@ -63,6 +63,7 @@ export default function Home() {
         </svg>
         <p>Freelance</p>
         <p>Designer & Developer</p>
+        <p>Based in Lisbon</p>
       </div>
     </motion.main>
   );
