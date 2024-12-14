@@ -8,9 +8,9 @@ export const DATA = {
   location: "Lisbon, Portugal",
   locationLink: "https://www.google.com/maps/place/lisbon",
   description:
-    "A current University student with a palpable desire to research into Cryptography, specifically the Quantum Cryptography area. By night, I run a creative studio crafting immersive digital experiences that push the boundaries of web technology.",
+    "Computer Science Student turned Entrepreneur. I love building things and helping people. Very passionate about Cryptography.",
   summary:
-    "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
+    "I am currently pursuing a Bachelor's degree in Computer Science and Engineering at [Nova School of Science and Technology](https://www.fct.unl.pt/en). My passion for cryptography and theoretical computer science developed during my second year, and I am now focused on obtaining a Master's degree in Computer Science with a specialization in Cryptography. In addition to my studies, I am a dedicated developer and entrepreneur, having founded my own company where I create innovative web applications using cutting-edge technologies.",
   avatarUrl: "/me.png",
   skills: [
     "React",
