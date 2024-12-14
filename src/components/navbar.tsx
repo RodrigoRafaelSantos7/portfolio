@@ -18,7 +18,7 @@ export default function Navbar() {
       <Dock
         magnification={60}
         distance={100}
-        className="z-50 rounded-xl pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-1 bg-background"
+        className="z-50 rounded-full pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-1 bg-background"
       >
         {DATA.navbar.map((item) => (
           <DockIcon key={item.href}>
