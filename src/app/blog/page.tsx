@@ -15,7 +15,20 @@ export default async function BlogPage() {
   return (
     <section>
       <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="font-medium text-2xl mb-8 tracking-tighter">blog</h1>
+        <div className="flex flex-col items-center justify-center space-y-4 sm:text-center mb-20">
+          <div className="space-y-2">
+            <div className="sm:inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm hidden">
+              notes
+            </div>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+              I like to learn
+            </h2>
+            <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              I study a lot, write notes, and share them with friends. here are
+              some of my notes from school.
+            </p>
+          </div>
+        </div>
       </BlurFade>
       {posts
         .sort((a, b) => {
@@ -29,7 +42,7 @@ export default async function BlogPage() {
         .map((post, id) => (
           <BlurFade delay={BLUR_FADE_DELAY * 2 + id * 0.05} key={post.slug}>
             <Link
-              className="flex flex-col space-y-1 mb-4"
+              className="flex flex-col space-y-1 mb-4 hover:bg-foreground/10 p-4 rounded-lg"
               href={`/blog/${post.slug}`}
             >
               <div className="w-full flex flex-col">
