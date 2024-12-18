@@ -1,11 +1,40 @@
 ---
-title: "Hello World"
-publishedAt: "2024-06-18"
-summary: "My first post on my new blog."
+title: "Inteligência artificial"
+publishedAt: "2024-12-18"
+summary: "Notas para a disciplina de Inteligência Artificial"
 ---
 
-Hi there!
+Notas para a disciplina de Inteligência Artificial do curso de Engenharia Informática da FCT-UNL.
 
-```jsx
-console.log("Hello World");
-```
+# Aula 1
+
+Apresentação da disciplina, pouco relevante para a avaliação.
+
+# Aula 2
+
+Um **agente** é qualquer entidade que **perceciona** o seu **ambiente** através de **sensores** e age nele através de **atuadores**.
+
+Um **agente racional** deve selecionar a ação que maximiza o valor **esperado** da medida de desempenho, dada a evidência fornecida pela sequência de perceções e conhecimento que o agente tenha.
+
+# Aula 3
+
+## Formular um problema de procura
+
+#### Porque procurar?
+
+Temos um problema difícil. Dada uma descrição que nos ajuda a reconhecer uma solução, sem nos ser dado um algoritmo que resolve o problema, temos que procurar por uma solução.
+
+#### Definição de um problema de pesquisa
+
+Um problema de pesquisa é definido por:
+
+- Um conjunto de estados
+- Um estado inicial
+- Estados objetivo ou um teste objetivo
+  - Uma função booleana que nos diz se um dado estado é um estado objetivo.
+- Uma função sucessor
+  - Uma ação que nos leva de um estado para o outro
+- (Opcional) um custo associado a cada ação
+  - Sempre $\geq$ 0
+
+Uma solução é um caminho do estado inicial a um estado objetivo (opcionalmente com o menor custo total).
