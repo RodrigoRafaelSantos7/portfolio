@@ -1,0 +1,72 @@
+---
+title: "Aula 3"
+publishedAt: "2024-12-23"
+summary: "Notas para a aula 3 da disciplina de Inteligência Artificial"
+category: "Inteligência Artificial"
+---
+
+### Procura Cega em Árvore vs Grafo
+
+A procura em **árvore** não contempla estados já explorados, havendo assim a possibilidade de ficar presa em loops (isto acontece pois não existe set com os nós já explorados).
+
+Por outro lado na procura em **grafo** mantemos um set com os nós já explorados (Se um dado nó já tiver sido expandido passamos à frente não o voltamos a expandir).
+
+### Estratégias de procura
+
+Uma **estratégia** de procura é definida pela **ordem de expansão dos nós**.
+
+As estratégias são avaliadas segundo as dimensões:
+
+- **completude** - encontra garantidamente uma solução, caso exista?
+- **complexidade temporal** - número de nós gerados
+- **complexidade espacial** - número máximo de nós em memória
+- **optimalidade** - encontra sempre uma solução de custo mínimo?
+
+A complexidade temporal e espacial são avaliadas em função de:
+
+- **b** - de ramificação máximo da árvore de procura (pode ser $\infty$)
+- **d** - profundidade da solução de custo mínimo
+- **m** - profundidade máxima do espaço de estados (pode ser $\infty$)
+
+### Estratégias de procura cega
+
+As estratégias de procura **cegas (ou não informadas)** recorrem apenas à informação disponibilizada no problema.
+
+## Procura Cega
+
+### Procura em Largura Primeiro em árvores (breadth-first)
+
+A **procura em Largura Primeiro** é uma pesquisa simples em que a _raíz_ é expandida primeiro, em seguida todos os seus sucessores são expandidos, depois os _sucessores dos sucessores da raíz_, e por ai em diante ... Normalmente, são expandidos todos os nós a uma dada profundidade antes de serem expandidos os nós do nível seguinte.
+
+![BFS em árvore](/BFS-TREE.png)
+
+#### Propriedades da procura em Largura Primeiro
+
+- **Completa?** Sim (se **b** for finito)
+- **Tempo?** $O(b^{d+1})$
+- **Espaço?** $O(b^{d+1})$
+- **Optimal?** Sim, **se o custo das ações for idêntico!**
+
+**Espaço** é o maior problema (mais do que o tempo).
+
+### Procura em Largura Primeiro Optimizada (em Grafo)
+
+![BFS em grafo](/BFS-Optimizada.png)
+
+Complexidade temporal e espacial reduzidas para $O(b^d)$ em vez de $O(b^{d+1})$.
+
+**Duas grande mudanças em relação à Procura em Largura Primeiro em árvore**:
+
+1. Temos um _set_ de _nós explorados_, previne ciclos infinitos.
+2. O _teste objetivo_ é aplicado _antes da inserção na fronteira_ e também no _início de cada iteração_.
+
+### Procura de custo uniforme (Uniforme-cost search)
+
+Quando o custo de todos os passos é igual, a _procura em largura primeiro_ é **optimal** porque expande sempre o _nó menos profundo_. Ao fazermos uma pequena alteração, podemos montar um algoritmo que é **optimal** para qualquer **custo** (os custos não necessitam de ser idênticos).
+
+Em vez de **expandir o nó menos profundo**, a **procura de custo uniforme** expande o nó $n$ com o **menor custo de caminho** $g(n)$. Isto é alcançado através de uma fronteira implementada com uma fila com prioridade, ordenada em função de $g(n)$.
+
+Adicional à mudança na fronteira, **existem duas outras mudanças** significativas em relação à **BFS**:
+
+- **O teste objetivo** é aplicado quando um nó é **selecionado para expansão em vez de quando é gerado** (esta comparação é valida com a BFS optimizada). A razão para esta decisão, é que aplicar **o teste objetivo quando um nó é gerado** pode levar a um caminho **suboptimal**
+- Adicionamos um **teste objetivo** para o caso em que um caminho melhor é encontrado para um nó que esteja atualmente na fronteira.

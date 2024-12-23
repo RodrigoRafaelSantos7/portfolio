@@ -14,10 +14,23 @@ type Metadata = {
   publishedAt: string;
   summary: string;
   image?: string;
+  category?: string;
 };
 
-function getMDXFiles(dir: string) {
-  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
+function getMDXFiles(dir: string): string[] {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  let files: string[] = [];
+
+  entries.forEach((entry) => {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files = files.concat(getMDXFiles(fullPath));
+    } else if (entry.isFile() && path.extname(entry.name) === ".mdx") {
+      files.push(fullPath);
+    }
+  });
+
+  return files;
 }
 
 export async function markdownToHTML(markdown: string) {
@@ -40,14 +53,17 @@ export async function markdownToHTML(markdown: string) {
   return p.toString();
 }
 
-export async function getPost(slug: string) {
-  const filePath = path.join("content", `${slug}.mdx`);
+export async function getPost(slug: string, category?: string) {
+  const filePath = category
+    ? path.join("content", category, `${slug}.mdx`)
+    : path.join("content", `${slug}.mdx`);
+
   let source = fs.readFileSync(filePath, "utf-8");
   const { content: rawContent, data: metadata } = matter(source);
   const content = await markdownToHTML(rawContent);
   return {
     source: content,
-    metadata,
+    metadata: metadata as Metadata,
     slug,
   };
 }
@@ -55,9 +71,23 @@ export async function getPost(slug: string) {
 async function getAllPosts(dir: string) {
   let mdxFiles = getMDXFiles(dir);
   return Promise.all(
-    mdxFiles.map(async (file) => {
-      let slug = path.basename(file, path.extname(file));
-      let { metadata, source } = await getPost(slug);
+    mdxFiles.map(async (filePath) => {
+      const relativePath = path.relative(
+        path.join(process.cwd(), "content"),
+        filePath
+      );
+      const category =
+        path.dirname(relativePath) !== "."
+          ? path.dirname(relativePath)
+          : undefined;
+      const slug = path.basename(filePath, path.extname(filePath));
+      let { metadata, source } = await getPost(slug, category);
+
+      // If category is not in frontmatter, use directory name
+      if (!metadata.category && category) {
+        metadata.category = category;
+      }
+
       return {
         metadata,
         slug,
@@ -67,6 +97,20 @@ async function getAllPosts(dir: string) {
   );
 }
 
-export async function getBlogPosts() {
-  return getAllPosts(path.join(process.cwd(), "content"));
+export async function getBlogPosts(category?: string) {
+  const posts = await getAllPosts(path.join(process.cwd(), "content"));
+
+  if (category) {
+    return posts.filter((post) => post.metadata.category === category);
+  }
+
+  return posts;
+}
+
+export async function getCategories() {
+  const posts = await getBlogPosts();
+  const categories = new Set(
+    posts.map((post) => post.metadata.category).filter(Boolean)
+  );
+  return Array.from(categories);
 }
