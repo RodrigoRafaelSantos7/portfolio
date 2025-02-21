@@ -20,3 +20,13 @@
     border-color: var(--color-gray-200, currentColor);
   }
 }
+
+::selection {
+  background-color: #00f; /* Blue background */
+  color: white; /* White text */
+}
+
+::-moz-selection {
+  background-color: #00f; /* Blue background for Firefox */
+  color: white; /* White text */
+}
