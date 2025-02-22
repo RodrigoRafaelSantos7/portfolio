@@ -9,6 +9,7 @@ import { VARIANTS_CONTAINER } from '@/constants/animations'
 import { About } from '@/components/sections/about'
 import { Now } from '@/components/sections/now'
 import { NewsletterSubscribe } from '@/components/sections/newsletter-subscribe'
+import { Projects } from '@/components/sections/projects'
 
 export default function Personal(): React.ReactNode {
   return (
@@ -21,6 +22,7 @@ export default function Personal(): React.ReactNode {
       <About />
       <Now />
       <NewsletterSubscribe />
+      <Projects />
     </motion.main>
   )
 }
