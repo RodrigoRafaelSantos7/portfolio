@@ -14,6 +14,22 @@ export async function POST(request: Request) {
       throw new Error('RESEND_AUDIENCE_ID is not configured')
     }
 
+    const contact = await resend.contacts.get({
+      id: email,
+      audienceId: AUDIENCE_ID,
+    })
+
+    if (contact) {
+      console.log('Contact already exists')
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Contact already exists',
+        },
+        { status: 400 },
+      )
+    }
+
     // Add contact to audience
     await resend.contacts.create({
       email,

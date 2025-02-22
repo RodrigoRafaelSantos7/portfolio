@@ -1,3 +1,3 @@
 - [ ] Add metadata description in layout.tsx
-- [ ] Fix the project cards
-- [ ] Setup Resend
+- [x] Setup Resend
+- [ ] Setup the Unsubscribe page
