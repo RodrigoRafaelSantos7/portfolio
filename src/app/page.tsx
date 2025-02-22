@@ -36,12 +36,12 @@ export default function Personal() {
         <div className='flex-1'>
           <h1 className='font-medium text-black dark:text-white mb-4'>Now</h1>
           <p className=' text-zinc-600 dark:text-[rgb(180,180,180)]'>
-            I'm studying{' '}
+            I&apos;m studying{' '}
             <a className='underline dark:text-zinc-300' href=''>
               Computer Science and Engineering
             </a>
-            ; I'm conducting research on asynchronous choreographies and their
-            impacts on swarm behaviour under the supervision of{' '}
+            ; I&apos;m conducting research on asynchronous choreographies and
+            their impacts on swarm behaviour under the supervision of{' '}
             <a
               className='underline dark:text-zinc-300'
               href='https://novaresearch.unl.pt/en/persons/jo%C3%A3o-costa-seco'
