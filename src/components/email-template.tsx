@@ -75,7 +75,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
           }}
         >
           Get ready to receive exclusive updates, insights, and news directly in
-          your inbox. I'm excited to share my journey with you!
+          your inbox. I&apos;m excited to share my journey with you!
         </p>
 
         <div
@@ -92,8 +92,8 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
               margin: '0',
             }}
           >
-            If you didn't sign up for this newsletter, you can safely ignore
-            this email.
+            If you didn&apos;t sign up for this newsletter, you can safely
+            ignore this email.
           </p>
         </div>
       </div>
@@ -110,10 +110,11 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
         © {new Date().getFullYear()} All rights reserved
       </p>
       <p style={{ margin: '0' }}>
-        You're receiving this email because you signed up for my newsletter.
+        You&apos;re receiving this email because you signed up for my
+        newsletter.
       </p>
       <p style={{ marginTop: '16px', color: '#718096' }}>
-        If you don't want to receive this newsletter, you can{' '}
+        If you don&apos;t want to receive this newsletter, you can{' '}
         <a
           href={`https://rodrigosantos.dev/unsubscribe?email=${encodeURIComponent(email)}`}
           style={{
