@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { ThemeProvider } from 'next-themes'
 import { Header } from './header'
+
 import { Footer } from './footer'
 
 export const viewport: Viewport = {
@@ -52,10 +54,12 @@ export default function RootLayout({
             <div className='relative mx-auto w-full max-w-screen-sm flex-1 px-4 pt-20'>
               <Header />
               {children}
+
               <Footer />
             </div>
           </div>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
