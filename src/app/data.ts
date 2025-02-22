@@ -31,7 +31,7 @@ export const projects: Project[] = [
   {
     title: 'The Profit Blueprint',
     description:
-      'An online platform, supporting 2,000+ daily active users and over 220K unique visitors last month.',
+      'An online platform, supporting 2,000+ daily active users and over 220K unique visitors per month.',
     background:
       'https://res.cloudinary.com/dedobvqub/image/upload/v1739875688/TPB_Logo_Background_urvhmy.png',
     link: 'https://the-profit-blueprint.com',
