@@ -42,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} bg-[var(--background)]  antialiased transition-colors duration-300`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} bg-[var(--background)]  antialiased transition-colors duration-500`}
       >
         <ThemeProvider
           enableSystem={true}
