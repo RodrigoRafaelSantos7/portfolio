@@ -1,7 +1,5 @@
-import { EmailTemplate } from '@/components/email-template'
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
-import * as React from 'react'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID
@@ -14,46 +12,43 @@ export async function POST(request: Request) {
       throw new Error('RESEND_AUDIENCE_ID is not configured')
     }
 
-    const contact = await resend.contacts.get({
-      id: email,
-      audienceId: AUDIENCE_ID,
-    })
+    try {
+      await resend.contacts.create({
+        email,
+        unsubscribed: false,
+        audienceId: AUDIENCE_ID,
+      })
 
-    if (contact) {
-      console.log('Contact already exists')
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Contact already exists',
-        },
-        { status: 400 },
-      )
+      return NextResponse.json({
+        success: true,
+        message: 'Successfully subscribed to newsletter',
+      })
+    } catch (createError: any) {
+      // Check specifically for the error indicating the contact already exists
+      if (
+        createError.message?.includes('already exists') ||
+        createError.statusCode === 409
+      ) {
+        return NextResponse.json(
+          { error: 'This email is already subscribed to the newsletter' },
+          { status: 400 },
+        )
+      }
+
+      // Check for rate limit error
+      if (createError.message?.includes('Too many requests')) {
+        return NextResponse.json(
+          { error: 'Please try again in a few moments' },
+          { status: 429 },
+        )
+      }
+
+      throw createError
     }
-
-    // Add contact to audience
-    await resend.contacts.create({
-      email,
-      unsubscribed: false,
-      audienceId: AUDIENCE_ID,
-    })
-
-    // Send welcome email
-    const { data, error } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
-      to: [email],
-      subject: 'Welcome to My Newsletter!',
-      react: React.createElement(EmailTemplate, { email }),
-    })
-
-    if (error) {
-      return NextResponse.json({ error }, { status: 500 })
-    }
-
-    return NextResponse.json({ success: true, data })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Newsletter subscription error:', error)
     return NextResponse.json(
-      { error: 'Error processing subscription request' },
+      { error: error.message || 'Error processing subscription request' },
       { status: 500 },
     )
   }
