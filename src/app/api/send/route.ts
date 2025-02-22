@@ -1,5 +1,10 @@
+/* @eslint-disable @typescript-eslint/no-explicit-any */
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
+
+interface ResendError extends Error {
+  statusCode?: number
+}
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID
@@ -23,11 +28,12 @@ export async function POST(request: Request) {
         success: true,
         message: 'Successfully subscribed to newsletter',
       })
-    } catch (createError: any) {
+    } catch (createError) {
+      const error = createError as ResendError
       // Check specifically for the error indicating the contact already exists
       if (
-        createError.message?.includes('already exists') ||
-        createError.statusCode === 409
+        error.message?.includes('already exists') ||
+        error.statusCode === 409
       ) {
         return NextResponse.json(
           { error: 'This email is already subscribed to the newsletter' },
@@ -36,19 +42,20 @@ export async function POST(request: Request) {
       }
 
       // Check for rate limit error
-      if (createError.message?.includes('Too many requests')) {
+      if (error.message?.includes('Too many requests')) {
         return NextResponse.json(
           { error: 'Please try again in a few moments' },
           { status: 429 },
         )
       }
 
-      throw createError
+      throw error
     }
-  } catch (error: any) {
-    console.error('Newsletter subscription error:', error)
+  } catch (error) {
+    const err = error as Error
+    console.error('Newsletter subscription error:', err)
     return NextResponse.json(
-      { error: error.message || 'Error processing subscription request' },
+      { error: err.message || 'Error processing subscription request' },
       { status: 500 },
     )
   }
