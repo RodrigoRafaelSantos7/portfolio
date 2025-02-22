@@ -21,6 +21,16 @@
   }
 }
 
+:root {
+  --heading: #000; /* Heading color */
+  --text: #52525b; /* Sections text color */
+}
+
+.dark {
+  --heading: #fff; /* Heading color */
+  --text: #b4b4b4; /* Sections text color */
+}
+
 ::selection {
   background-color: #00f; /* Blue background */
   color: white; /* White text */

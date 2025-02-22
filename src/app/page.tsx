@@ -5,6 +5,7 @@ import {
   VARIANTS_SECTION,
   TRANSITION_SECTION,
 } from '@/constants/animations'
+import { About } from '@/components/sections/about'
 
 export default function Personal() {
   return (
@@ -14,21 +15,7 @@ export default function Personal() {
       initial='hidden'
       animate='visible'
     >
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <div className='flex-1'>
-          <h1 className='font-medium text-black dark:text-white mb-4'>
-            About me
-          </h1>
-          <p className='text-zinc-600 dark:text-[rgb(180,180,180)]'>
-            Crafting Web Apps with React since 2024. Passionate about interface
-            design and attention to detail, striving to create great
-            experiences.
-          </p>
-        </div>
-      </motion.section>
+      <About />
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
