@@ -9,6 +9,15 @@ export type Project = {
   id: string
 }
 
+type WorkExperience = {
+  company: string
+  title: string
+  start: string
+  end: string
+  link: string
+  id: string
+}
+
 export const PROJECTS: Project[] = [
   {
     name: 'The Profit Blueprint',
@@ -28,5 +37,16 @@ export const PROJECTS: Project[] = [
     image:
       'https://res.cloudinary.com/dedobvqub/image/upload/v1740147638/459591107_3908270396122187_8608528738810136292_n_1_bp7aqt.jpg',
     id: 'project2',
+  },
+]
+
+export const WORK_EXPERIENCE: WorkExperience[] = [
+  {
+    company: 'Freelance',
+    title: 'Front-end Developer',
+    start: '2023',
+    end: 'Present',
+    link: '',
+    id: 'work3',
   },
 ]

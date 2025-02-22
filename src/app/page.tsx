@@ -5,8 +5,6 @@ import {
   VARIANTS_SECTION,
   TRANSITION_SECTION,
 } from '@/constants/animations'
-import { PROJECTS } from './data'
-import { DisclosureCard } from '@/components/disclosure-card'
 
 export default function Personal() {
   return (
@@ -24,8 +22,8 @@ export default function Personal() {
           <h1 className='font-medium text-black dark:text-white mb-4'>
             About me
           </h1>
-          <p className='text-zinc-600 dark:text-zinc-400'>
-            Crafting Web Apps with React since 2023. Passionate about interface
+          <p className='text-zinc-600 dark:text-[rgb(180,180,180)]'>
+            Crafting Web Apps with React since 2024. Passionate about interface
             design and attention to detail, striving to create great
             experiences.
           </p>
@@ -37,7 +35,7 @@ export default function Personal() {
       >
         <div className='flex-1'>
           <h1 className='font-medium text-black dark:text-white mb-4'>Now</h1>
-          <p className=' text-zinc-600 dark:text-zinc-400'>
+          <p className=' text-zinc-600 dark:text-[rgb(180,180,180)]'>
             I'm studying{' '}
             <a className='underline dark:text-zinc-300' href=''>
               Computer Science and Engineering
@@ -80,23 +78,21 @@ export default function Personal() {
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
-        className='bg-zinc-100 dark:bg-[#191919] rounded-lg p-8'
+        className='bg-[#F9F9F9] dark:bg-[#191919] rounded-lg p-7'
       >
-        <p className='text-zinc-600 dark:text-zinc-400'>
+        <p className='text-zinc-600 dark:text-[rgb(180,180,180)] mb-3'>
           Subscribe to my personal newsletter for project updates, great links,
           and some personal notes.
         </p>
-      </motion.section>
-
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className='mb-5 text-lg font-medium'>Selected Projects</h3>
-        <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
-          {PROJECTS.map(project => (
-            <DisclosureCard key={project.name} project={project} />
-          ))}
+        <div className='flex flex-row items-center gap-2 w-full'>
+          <input
+            type='text'
+            className='flex-1 h-9 rounded-lg bg-[#F0F0F0] px-4 text-zinc-900  placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20c dark:bg-[#222] dark:text-[rgb(180,180,180)] dark:placeholder-[rgb(180,180,180)]'
+            placeholder='you@example.com'
+          />
+          <button className='h-9 px-4 text-sm  rounded-lg dark:bg-[#F0F0F0] hover:bg-[rgb(180,180,180)] text-white dark:text-black bg-[#222] dark:hover:bg-[rgb(180,180,180)] transition-colors duration-200'>
+            Subscribe
+          </button>
         </div>
       </motion.section>
     </motion.main>

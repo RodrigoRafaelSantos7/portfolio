@@ -1,2 +1,3 @@
 - [ ] Add metadata description in layout.tsx
 - [ ] Fix the project cards
+- [ ] Setup Resend
