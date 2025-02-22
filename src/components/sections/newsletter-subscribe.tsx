@@ -78,13 +78,13 @@ export function NewsletterSubscribe(): React.ReactNode {
                 setError(null)
               }}
               disabled={isLoading}
-              className='flex-1 h-10 rounded-lg bg-[var(--newsletter-placeholder-bg)] p-4 placeholder-[var(--text)] focus:outline-none focus:ring-2 focus:ring-[var(--newsletter-focus)] text-[var(--text)] disabled:opacity-50'
+              className='flex-1 h-10 text-xs sm:text-base rounded-lg bg-[var(--newsletter-placeholder-bg)] p-4 placeholder-[var(--text)] focus:outline-none focus:ring-2 focus:ring-[var(--newsletter-focus)] text-[var(--text)] disabled:opacity-50'
               placeholder={newsletter.placeholder}
             />
             <button
               type='submit'
               disabled={isLoading}
-              className='h-10 px-4 text-sm font-medium rounded-lg bg-[var(--newsletter-button-bg)] hover:bg-[var(--newsletter-button-hover)] text-[var(--newsletter-button-text)] disabled:opacity-50'
+              className='h-10 px-4 text-xs sm:text-sm font-medium rounded-lg bg-[var(--newsletter-button-bg)] hover:bg-[var(--newsletter-button-hover)] text-[var(--newsletter-button-text)] disabled:opacity-50'
             >
               {isLoading ? 'Subscribing...' : newsletter.button}
             </button>
