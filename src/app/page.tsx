@@ -12,7 +12,7 @@ import { NewsletterSubscribe } from '@/components/sections/newsletter-subscribe'
 import { Projects } from '@/components/sections/projects'
 import { WorkExperience } from '@/components/sections/work-experience'
 import { Blog } from '@/components/sections/blog'
-
+import { Contact } from '@/components/sections/contact'
 export default function Personal(): React.ReactNode {
   return (
     <motion.main
@@ -27,6 +27,7 @@ export default function Personal(): React.ReactNode {
       <Projects />
       <WorkExperience />
       <Blog />
+      <Contact />
     </motion.main>
   )
 }

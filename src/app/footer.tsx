@@ -53,7 +53,7 @@ function ThemeSwitch() {
         return (
           <button
             key={theme.id}
-            className='inline-flex h-7 w-7 items-center justify-center text-zinc-500 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-950 dark:text-zinc-400 dark:data-[checked=true]:text-zinc-50'
+            className='inline-flex h-7 w-7 items-center justify-center text-[var(--text)] transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-950  dark:data-[checked=true]:text-zinc-50'
             type='button'
             aria-label={`Switch to ${theme.label} theme`}
             data-id={theme.id}
@@ -70,8 +70,8 @@ export function Footer() {
   return (
     <footer className='mt-24 border-t border-zinc-100 px-0 py-4 dark:border-zinc-800'>
       <div className='flex items-center justify-between'>
-        <a href='https://github.com/ibelick/nim' target='_blank'>
-          <TextLoop className='text-xs text-zinc-500'>
+        <a href='https://github.com/RodrigoRafaelSantos7' target='_blank'>
+          <TextLoop className='text-xs text-[var(--text)]'>
             <span>© {new Date().getFullYear()} Rodrigo Santos.</span>
             <span>Built with ☕.</span>
           </TextLoop>

@@ -32,6 +32,11 @@ type BlogPost = {
   uid: string
 }
 
+type SocialLink = {
+  label: string
+  link: string
+}
+
 export const ABOUT: About = {
   heading: 'About me',
   text: 'Crafting Web Apps with React since 2024. Passionate about interface design and attention to detail, striving to create great experiences.',
@@ -87,3 +92,16 @@ export const BLOG_POSTS: BlogPost[] = [
     uid: 'blog-3',
   },
 ]
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  {
+    label: 'Github',
+    link: 'https://github.com/RodrigoRafaelSantos7',
+  },
+  {
+    label: 'LinkedIn',
+    link: 'https://www.linkedin.com/in/ibelick',
+  },
+]
+
+export const EMAIL = 'hello@rodrigosantos.dev'
