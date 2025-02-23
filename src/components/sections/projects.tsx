@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { VARIANTS_SECTION, TRANSITION_SECTION } from '@/constants/animations'
 import { motion, AnimatePresence } from 'motion/react'
 import { ProgressiveBlur } from '../ui/progressive-blue'
