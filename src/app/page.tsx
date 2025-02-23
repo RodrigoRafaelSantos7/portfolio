@@ -11,6 +11,8 @@ import { Now } from '@/components/sections/now'
 import { NewsletterSubscribe } from '@/components/sections/newsletter-subscribe'
 import { Projects } from '@/components/sections/projects'
 import { WorkExperience } from '@/components/sections/work-experience'
+import { Blog } from '@/components/sections/blog'
+
 export default function Personal(): React.ReactNode {
   return (
     <motion.main
@@ -24,6 +26,7 @@ export default function Personal(): React.ReactNode {
       <NewsletterSubscribe />
       <Projects />
       <WorkExperience />
+      <Blog />
     </motion.main>
   )
 }

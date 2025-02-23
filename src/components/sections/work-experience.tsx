@@ -1,6 +1,6 @@
 import { VARIANTS_SECTION, TRANSITION_SECTION } from '@/constants/animations'
 import { motion } from 'motion/react'
-import { workExperience } from '@/app/data'
+import { WORK_EXPERIENCE } from '@/app/data'
 
 export function WorkExperience(): React.ReactNode {
   return (
@@ -10,7 +10,7 @@ export function WorkExperience(): React.ReactNode {
           Work Experience
         </h1>
         <div className='flex flex-col space-y-2'>
-          {workExperience.map(job => (
+          {WORK_EXPERIENCE.map(job => (
             <a
               className='relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30'
               href={job.link}

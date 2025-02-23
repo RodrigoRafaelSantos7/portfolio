@@ -1,4 +1,4 @@
-import { newsletter } from '@/app/data'
+import { NEWSLETTER } from '@/app/data'
 import { VARIANTS_SECTION, TRANSITION_SECTION } from '@/constants/animations'
 import { motion } from 'motion/react'
 import { useState, useEffect } from 'react'
@@ -87,7 +87,7 @@ export function NewsletterSubscribe(): React.ReactNode {
         transition={TRANSITION_SECTION}
         className='bg-[var(--newsletter-background)] rounded-lg p-7'
       >
-        <p className='text-[var(--text)] mb-3'>{newsletter.text}</p>
+        <p className='text-[var(--text)] mb-3'>{NEWSLETTER.text}</p>
         {isSuccess ? (
           <p className='text-green-500'>
             Thank you for subscribing to our newsletter!
@@ -104,7 +104,7 @@ export function NewsletterSubscribe(): React.ReactNode {
                 }}
                 disabled={isLoading}
                 className='flex-1 h-10 text-xs sm:text-base rounded-lg bg-[var(--newsletter-placeholder-bg)] p-4 placeholder-[var(--text)] focus:outline-none focus:ring-2 focus:ring-[var(--newsletter-focus)] text-[var(--text)] disabled:opacity-50'
-                placeholder={newsletter.placeholder}
+                placeholder={NEWSLETTER.placeholder}
                 required
               />
               <button
@@ -112,7 +112,7 @@ export function NewsletterSubscribe(): React.ReactNode {
                 disabled={isLoading}
                 className='h-10 px-4 text-xs sm:text-sm font-medium rounded-lg bg-[var(--newsletter-button-bg)] hover:bg-[var(--newsletter-button-hover)] text-[var(--newsletter-button-text)] disabled:opacity-50'
               >
-                {isLoading ? 'Subscribing...' : newsletter.button}
+                {isLoading ? 'Subscribing...' : NEWSLETTER.button}
               </button>
             </div>
             <p className='text-[0.5rem] ml-1 text-[var(--text)]'>

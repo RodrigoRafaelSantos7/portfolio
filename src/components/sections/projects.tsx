@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { VARIANTS_SECTION, TRANSITION_SECTION } from '@/constants/animations'
 import { motion, AnimatePresence } from 'motion/react'
 import { ProgressiveBlur } from '../ui/progressive-blue'
-import { projects } from '@/app/data'
+import { PROJECTS } from '@/app/data'
 import { PlusIcon } from 'lucide-react'
 import { Cursor } from '../ui/cursor'
 import Link from 'next/link'
@@ -30,7 +30,7 @@ export function Projects(): React.ReactNode {
       <div className='flex-1'>
         <h1 className='font-medium text-[var(--heading)] mb-4'>Projects</h1>
         <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
-          {projects.map(project => (
+          {PROJECTS.map(project => (
             <Link href={project.link} key={project.title} target='_blank'>
               <div
                 className='group relative my-4 aspect-square overflow-hidden rounded-lg cursor-none'
