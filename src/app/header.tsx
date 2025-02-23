@@ -30,14 +30,14 @@ export function Header() {
           className='h-16 w-16 rounded-full hover:scale-105 transition-all duration-300'
         />
         <div>
-          <Link href='/' className='font-medium text-black dark:text-white'>
+          <Link href='/' className='font-medium text-[var(--heading)]'>
             Rodrigo Santos
           </Link>
           <TextEffect
             as='p'
             preset='fade'
             per='char'
-            className='text-zinc-600 dark:text-zinc-500 font-[family-name:var(--font-geist-mono)]'
+            className='text-[var(--text)] font-[family-name:var(--font-geist-mono)]'
             delay={0.5}
           >
             Software Engineer

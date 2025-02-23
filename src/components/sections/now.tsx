@@ -1,13 +1,6 @@
 import { VARIANTS_SECTION, TRANSITION_SECTION } from '@/constants/animations'
 import { motion } from 'motion/react'
 
-/**
- * Now section
- *
- * This section contains information about the current activities and projects.
- *
- * @returns {React.ReactNode} The Now section component.
- */
 export function Now(): React.ReactNode {
   return (
     <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>

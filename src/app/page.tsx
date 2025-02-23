@@ -10,7 +10,7 @@ import { About } from '@/components/sections/about'
 import { Now } from '@/components/sections/now'
 import { NewsletterSubscribe } from '@/components/sections/newsletter-subscribe'
 import { Projects } from '@/components/sections/projects'
-
+import { WorkExperience } from '@/components/sections/work-experience'
 export default function Personal(): React.ReactNode {
   return (
     <motion.main
@@ -23,6 +23,7 @@ export default function Personal(): React.ReactNode {
       <Now />
       <NewsletterSubscribe />
       <Projects />
+      <WorkExperience />
     </motion.main>
   )
 }

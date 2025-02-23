@@ -16,6 +16,15 @@ type Project = {
   link: string
 }
 
+type WorkExperience = {
+  company: string
+  title: string
+  start: string
+  end: string
+  link: string
+  id: string
+}
+
 export const about: About = {
   heading: 'About me',
   text: 'Crafting Web Apps with React since 2024. Passionate about interface design and attention to detail, striving to create great experiences.',
@@ -35,5 +44,16 @@ export const projects: Project[] = [
     background:
       'https://res.cloudinary.com/dedobvqub/image/upload/v1739875688/TPB_Logo_Background_urvhmy.png',
     link: 'https://the-profit-blueprint.com',
+  },
+]
+
+export const workExperience: WorkExperience[] = [
+  {
+    company: 'Freelance',
+    title: 'Front-end Developer',
+    start: '2024',
+    end: 'Present',
+    link: '',
+    id: 'work1',
   },
 ]

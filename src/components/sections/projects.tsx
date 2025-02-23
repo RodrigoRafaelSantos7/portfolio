@@ -9,13 +9,6 @@ import { PlusIcon } from 'lucide-react'
 import { Cursor } from '../ui/cursor'
 import Link from 'next/link'
 
-/**
- * Projects section
- *
- * This section contains information about the current and past projects.
- *
- * @returns {React.ReactNode} The Projects section component.
- */
 export function Projects(): React.ReactNode {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null)
   const [isHoveringCursor, setIsHoveringCursor] = useState<string | null>(null)

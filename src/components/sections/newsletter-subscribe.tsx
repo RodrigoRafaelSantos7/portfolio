@@ -6,13 +6,6 @@ import { z } from 'zod'
 
 const emailSchema = z.string().email('Please enter a valid email address')
 
-/**
- * Newsletter Subscribe section
- *
- * This section contains a form for users to subscribe to the newsletter.
- *
- * @returns {React.ReactNode} The Newsletter Subscribe section component.
- */
 export function NewsletterSubscribe(): React.ReactNode {
   const [email, setEmail] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -80,6 +73,7 @@ export function NewsletterSubscribe(): React.ReactNode {
               disabled={isLoading}
               className='flex-1 h-10 text-xs sm:text-base rounded-lg bg-[var(--newsletter-placeholder-bg)] p-4 placeholder-[var(--text)] focus:outline-none focus:ring-2 focus:ring-[var(--newsletter-focus)] text-[var(--text)] disabled:opacity-50'
               placeholder={newsletter.placeholder}
+              required
             />
             <button
               type='submit'
