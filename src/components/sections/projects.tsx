@@ -115,10 +115,10 @@ export function Projects(): React.ReactNode {
                   transition={{ duration: 0.2, ease: 'easeOut' }}
                 >
                   <div className='flex flex-col items-start gap-1 px-5 py-4'>
-                    <p className='text-base font-semibold text-[var(--heading)]'>
+                    <p className='text-base font-semibold text-[#fff]'>
                       {project.title}
                     </p>
-                    <span className='text-sm text-[var(--text)]'>
+                    <span className='text-sm text-[#b4b4b4]'>
                       {project.description}
                     </span>
                   </div>
