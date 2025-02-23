@@ -105,3 +105,4 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ]
 
 export const EMAIL = 'hello@rodrigosantos.dev'
+export const WEBSITE_URL = 'https://rodrigosantos.dev'
