@@ -54,3 +54,7 @@
   background-color: #00f; /* Blue background for Firefox */
   color: white; /* White text */
 }
+
+.grecaptcha-badge {
+  display: none !important;
+}
