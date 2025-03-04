@@ -21,7 +21,7 @@ type WorkExperience = {
   title: string
   start: string
   end: string
-  link: string
+  link?: string
   id: string
 }
 
@@ -62,10 +62,9 @@ export const PROJECTS: Project[] = [
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
     company: 'Freelance',
-    title: 'Front-end Developer',
+    title: 'Full-Stack Developer',
     start: '2024',
     end: 'Present',
-    link: '',
     id: 'work1',
   },
 ]
@@ -87,7 +86,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     label: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/ibelick',
+    link: 'https://www.linkedin.com/in/rodrigosantos7/',
   },
 ]
 

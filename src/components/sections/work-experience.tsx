@@ -10,29 +10,50 @@ export function WorkExperience(): React.ReactNode {
           Work Experience
         </h1>
         <div className='flex flex-col space-y-2'>
-          {WORK_EXPERIENCE.map(job => (
-            <a
-              className='relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30'
-              href={job.link}
-              target='_blank'
-              rel='noopener noreferrer'
-              key={job.id}
-            >
-              <div className='relative h-full w-full rounded-[15px] bg-[var(--background)] p-4'>
-                <div className='relative flex w-full flex-row justify-between'>
-                  <div>
-                    <h4 className='font-normal text-[var(--heading)]'>
-                      {job.title}
-                    </h4>
-                    <p className='text-[var(--text)] '>{job.company}</p>
+          {WORK_EXPERIENCE.map(job =>
+            job.link ? (
+              <a
+                className='relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30'
+                href={job.link}
+                target='_blank'
+                rel='noopener noreferrer'
+                key={job.id}
+              >
+                <div className='relative h-full w-full rounded-[15px] bg-[var(--background)] p-4'>
+                  <div className='relative flex w-full flex-row justify-between'>
+                    <div>
+                      <h4 className='font-normal text-[var(--heading)]'>
+                        {job.title}
+                      </h4>
+                      <p className='text-[var(--text)] '>{job.company}</p>
+                    </div>
+                    <p className='text-[var(--text)]'>
+                      {job.start} - {job.end}
+                    </p>
                   </div>
-                  <p className='text-[var(--text)]'>
-                    {job.start} - {job.end}
-                  </p>
+                </div>
+              </a>
+            ) : (
+              <div
+                key={job.id}
+                className='relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30'
+              >
+                <div className='relative h-full w-full rounded-[15px] bg-[var(--background)] p-4'>
+                  <div className='relative flex w-full flex-row justify-between'>
+                    <div>
+                      <h4 className='font-normal text-[var(--heading)]'>
+                        {job.title}
+                      </h4>
+                      <p className='text-[var(--text)] '>{job.company}</p>
+                    </div>
+                    <p className='text-[var(--text)]'>
+                      {job.start} - {job.end}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </a>
-          ))}
+            ),
+          )}
         </div>
       </div>
     </motion.section>
