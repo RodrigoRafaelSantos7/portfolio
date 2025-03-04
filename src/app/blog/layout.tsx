@@ -28,7 +28,7 @@ function CopyButton() {
   )
 }
 
-export default function LayoutBlogPost({ 
+export default function LayoutBlogPost({
   children,
 }: {
   children: React.ReactNode
