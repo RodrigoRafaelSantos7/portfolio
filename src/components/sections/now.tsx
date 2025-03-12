@@ -11,32 +11,6 @@ export function Now(): React.ReactNode {
           <a className='underline' href=''>
             Computer Science and Engineering
           </a>
-          ; I&apos;m conducting research on asynchronous choreographies and
-          their impacts on swarm behaviour under the supervision of{' '}
-          <a
-            className='underline'
-            href='https://novaresearch.unl.pt/en/persons/jo%C3%A3o-costa-seco'
-            target='_blank'
-          >
-            João Costa Seco
-          </a>{' '}
-          and{' '}
-          <a
-            className='underline'
-            href='https://novaresearch.unl.pt/en/persons/eduardo-miguel-pereira-do-cano-rico-geraldo'
-            target='_blank'
-          >
-            Eduardo Geraldo
-          </a>
-          . This work is integrated into the developments of the{' '}
-          <a
-            className='underline text-[var(--link)]'
-            href='https://project-tardis.eu'
-            target='_blank'
-          >
-            European Project TaRDIS
-          </a>
-          .
         </p>
         <p className='text-[var(--text)]'>
           <br /> I do freelance to create and improve company websites and web
