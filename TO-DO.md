@@ -1,3 +1,0 @@
-- [ ] Add metadata description in layout.tsx
-- [x] Setup Resend
-- [ ] Setup the Unsubscribe page
