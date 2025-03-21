@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Header } from './header'
-import { Footer } from './footer'
 import { ThemeProvider } from 'next-themes'
 
 export const viewport: Viewport = {
@@ -12,9 +11,9 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Nim - Personal website template',
+  title: 'Rodrigo Santos',
   description:
-    'Nim is a free and open-source personal website template built with Next.js 15, React 19 and Motion-Primitives.',
+    'I work as a design & software engineer at Quantum Studio. I like to build things for designers, developers and real world clients, and think deeply about the user interface, how it looks, feels, behaves.',
 }
 
 const inter = Inter({
@@ -39,10 +38,9 @@ export default function RootLayout({
           defaultTheme="system"
         >
           <div className="flex min-h-screen w-full flex-col">
-            <div className="relative mx-auto w-full max-w-[692px] flex-1 px-6 py-12 md:py-16">
+            <div className="md:py- relative mx-auto w-full max-w-[692px] flex-1 px-6 py-12">
               <Header />
               {children}
-              <Footer />
             </div>
           </div>
         </ThemeProvider>
