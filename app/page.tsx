@@ -41,7 +41,7 @@ export default function Personal() {
           </p>
           <p className="leading-7 font-medium text-[#63635e] dark:text-[#b5b3ad]">
             {
-              'I work as a design & software engineer at Quantum Studio. I like to build things for designers, developers and real world clients, and think deeply about the user interface, how it looks, feels, behaves.'
+              'I work as a software and design engineer at Quantum Studio. I like to build things for designers, developers and real world clients, and think deeply about the user interface, how it looks, feels, behaves.'
             }
           </p>
         </div>

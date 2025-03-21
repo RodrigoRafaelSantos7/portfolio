@@ -20,16 +20,22 @@ export const PROJECTS: Project[] = [
     id: 'project1',
   },
   {
+    title: 'The Profit Blueprint',
+    description: 'A course on web business models.',
+    link: 'https://the-profit-blueprint.com',
+    id: 'project2',
+  },
+  {
     title: 'Compramos a Sua Casa',
     description: 'A real estate broker website.',
     link: 'https://compramosasuacasa.com/',
-    id: 'project2',
+    id: 'project3',
   },
   {
     title: 'SOS Hair',
     description: 'A braid studio with a booking platform (in progress).',
     link: 'https://sos-hair.pt/',
-    id: 'project3',
+    id: 'project4',
   },
 ]
 
