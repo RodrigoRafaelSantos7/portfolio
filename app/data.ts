@@ -21,7 +21,7 @@ export const PROJECTS: Project[] = [
   },
   {
     title: 'The Profit Blueprint',
-    description: 'A course on web business models.',
+    description: 'An e-learning platform.',
     link: 'https://the-profit-blueprint.com',
     id: 'project2',
   },
